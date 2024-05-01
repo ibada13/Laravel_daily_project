@@ -14,32 +14,13 @@ class CreaturesController extends Controller
    public $bp = [] ;
 
     public function __construct(){}
-    public function annihilation(Rules $rule){
-        $rule->delete() ;
-            return Redirect::back();
-    }
 
 
 
-    public function edit(Request $req,Rules $elm ){
-        // dd($elm);
-        return view('angels.Harut',[
-            'content'=>$elm,
-        ]);
-    }
 
-    public function update(Request $req,Rules $elm ){
-        // dd($req);
-        $newelm = $req->validate([
-            'content'=>'required'
-        ]);
-        
-        $elm->update([
-            'content' =>$req['content'],
-        ]);
-        // dd($elm);
-        return redirect('/');
-    }
+
+
+   
     public function me_advices(){
         return view('adam.sapp',[
             "t"=>$this->t,

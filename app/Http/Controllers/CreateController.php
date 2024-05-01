@@ -8,13 +8,21 @@ use Illuminate\Http\Request;
 class CreateController extends Controller
 {
 
-    
-    public function addRule(Request $req){
+
+    public function Rule(Request $req){
         $newelm = $req->validate([
             "content"=>"required",
         ]);
         Rules::create($newelm);
         return redirect('/');
+
+    }
+    public function Objective(Request $req){
+        $newelm = $req->validate([
+            "content"=>"required",
+        ]);
+        Objectives::create($newelm);
+        return redirect('/objectives');
 
     }
 }

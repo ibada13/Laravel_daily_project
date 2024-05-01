@@ -13,7 +13,9 @@ class AttendController extends Controller
             $this->bp[] = $attr;
         }
     
-       }
+    }
+
+
     public function Rule(){
         // dd(Rules::all());
         $buttonAttributes  = [
@@ -28,11 +30,37 @@ class AttendController extends Controller
             "buttonmethod"=>"POST"
         ]);
     }
-    public function objectives(){
+
+    public function EditRule(Request $req,Rules $rule ){
+        // dd($Rule);
+        return view('angels.Harut',[
+            'content'=>$rule,
+            'dir'=>'/update',
+        ]);
+    }
+
+    
+    
+    
+    public function Objective(){
+        $buttonAttributes  = [
+            ['content'=> 'EDIT','method'=> 'GET' , 'dir'=> 'objectives/edit' , 'theme'=> 'add' ],
+            ['content'=> 'DELETE','method'=> 'DELETE' , 'dir'=> 'objectives' , 'theme'=> 'delete'],
+        ];
+        $this->setter($buttonAttributes);
         return view('adam.sapp',[
-            "t"=>Objectives::all(),
+            "t"=>Objectives::latest()->paginate(10),
             "bp"=>$this->bp,
-            "dir"=>"/objectives"
+            "dir"=>"/objectives",
+            "buttonmethod"=>"POST"
+        ]);
+    }
+
+    public function EditObjective(Request $req,Objectives $objective  ){
+        // dd($elm);
+        return view('angels.Harut',[
+            'content'=>$objective,
+            'dir'=>'/objectives/update'
         ]);
     }
 }

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AlterController;
 use App\Http\Controllers\AnnihilationController;
 use App\Http\Controllers\AttendController;
 use App\Http\Controllers\CreateController;
@@ -18,23 +19,41 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [CreaturesController::class,'main']);
+Route::get('/', [AttendController::class,'Rule']);
 
 Route::post('/', [CreateController::class , 'Rule']);
 
-Route::delete('{rule}/',[AnnihilationController::class , 'Rule']);
+Route::delete('/{rule}',[AnnihilationController::class , 'Rule']);
 
-Route::get('/{elm}/edit' , [AttendController::class ,  'Rule']);
+Route::get('/edit/{rule}/' , [AttendController::class ,  'EditRule']);
 
-Route::put('/{elm}/update',[CreaturesController::class , 'update']);
+Route::put('/update/{rule}/',[AlterController::class , 'Rule']);
 
 
-Route::get('/objectives',[CreaturesController::class , 'objectives']);
+/////////////////////////////////////////////////////////////////////
+
+Route::get('/objectives',[AttendController::class , 'Objective']);
+
+Route::post('/objectives', [CreateController::class , 'Objective']);
+
+Route::delete('/objectives/{objective}/',[AnnihilationController::class , 'Objective']);
+
+Route::get('/objectives/edit/{objective}/' , [AttendController::class ,  'EditObjective']);
+
+Route::put('/objectives/update/{objective}/',[AlterController::class , 'Objective']);
+
+//////////////////////////////////////////////////////////////
+
+Route::get('/meadvices', [CreaturesController::class , 'me_advices']);
+
+
+
+
 
 
 Route::get('/extra',[CreaturesController::class , 'extra']);
 
-Route::get('/meadvices', [CreaturesController::class , 'me_advices']);
+
 
 Route::get('/day/{id}',[CreaturesController::class , 'days']);
 

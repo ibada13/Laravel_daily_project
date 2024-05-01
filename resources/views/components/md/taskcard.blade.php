@@ -12,12 +12,17 @@
         @foreach($bp as $b)
     
         
-        <x-button :theme="$b['theme']" :content="$b['content']"  dir="/{{$elm['id']}}/{{$b['dir']}}" :method="$b['method']" />
+        <x-button :theme="$b['theme']" :content="$b['content']"  dir="{{$b['dir']}}/{{$elm['id']}}/" :method="$b['method']" />
 
         @endforeach
         @endisset 
         @isset($elm['created_at'])
             <p class="text-accent ">{{ $elm['created_at'] }}</p>
+            @isset($elm['updated_at'])
+            @if($elm['updated_at'] != $elm['created_at'])
+            <p class="text-red-500 ">{{ $elm['updated_at'] }}</p>
+            @endif
+            @endisset
         @endisset
     </div>
 </div>

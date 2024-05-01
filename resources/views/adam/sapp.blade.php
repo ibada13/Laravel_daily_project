@@ -7,6 +7,6 @@
     @endisset
     @endisset
     <div class="mt-6 p-4">
-        {{$t->links()}}
+        {{$t->links('pagination::tailwind')}}
     </div>
 @endsection

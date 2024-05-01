@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Rules;
 use App\Models\objectives;
+use App\Models\Meadvices;
+
 class AttendController extends Controller
 {
     public $bp ; 
@@ -61,6 +63,30 @@ class AttendController extends Controller
         return view('angels.Harut',[
             'content'=>$objective,
             'dir'=>'/objectives/update'
+        ]);
+    }
+
+
+    public function Meadvice(){
+        $buttonAttributes  = [
+            ['content'=> 'EDIT','method'=> 'GET' , 'dir'=> 'meadvices/edit' , 'theme'=> 'add' ],
+            ['content'=> 'DELETE','method'=> 'DELETE' , 'dir'=> 'meadvices' , 'theme'=> 'delete'],
+        ];
+        $this->setter($buttonAttributes);
+        return view('adam.sapp',[
+            "t"=>Meadvices::latest()->paginate(10),
+            "bp"=>$this->bp,
+            "dir"=>"/meadvices",
+            "buttonmethod"=>"POST"
+        ]);
+    }
+
+
+    public function EditMeadvice(Request $req,Meadvices $meadvice  ){
+        // dd($elm);
+        return view('angels.Harut',[
+            'content'=>$meadvice,
+            'dir'=>'/meadvice/update'
         ]);
     }
 }

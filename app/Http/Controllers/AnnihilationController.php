@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Meadvices;
 use Illuminate\Http\Request;
 use App\Models\Rules;
 use App\Models\objectives;
@@ -18,6 +19,13 @@ class AnnihilationController extends Controller
     
     public function Objective(Objectives $Objective){
         $Objective->delete() ;
+            return Redirect::back();
+    }
+
+
+
+    public function Meadvice(Meadvices $meadvice){
+        $meadvice->delete() ;
             return Redirect::back();
     }
 }

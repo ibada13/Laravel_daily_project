@@ -44,13 +44,16 @@ Route::put('/objectives/update/{objective}/',[AlterController::class , 'Objectiv
 
 //////////////////////////////////////////////////////////////
 
-Route::get('/meadvices', [CreaturesController::class , 'me_advices']);
+Route::get('/meadvices',[AttendController::class , 'Meadvice']);
 
+Route::POSt('/meadvices', [CreateController::class ,  'Meadvices']);
 
+Route::delete('/meadvices/{meadvice}/',[AnnihilationController::class , 'Meadvice']);
 
+Route::put('/meadvices/update/{meadvice}/',[AlterController::class , 'Meadvice']);
 
-
-
+Route::get('/meadvices/edit/{meadvice}/' , [AttendController::class ,  'EditMeadvice']);
+//////////////////////////////////////////////////////
 Route::get('/extra',[CreaturesController::class , 'extra']);
 
 

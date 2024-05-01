@@ -4,7 +4,7 @@ namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
-
+use App\Models\Meadvices;
 class DatabaseSeeder extends Seeder
 {
     /**
@@ -14,8 +14,8 @@ class DatabaseSeeder extends Seeder
     {
         // \App\Models\User::factory(10)->create();
             // \App\Models\Rules::factory(35)->create();
-            \App\Models\Objectives::factory(35)->create();
-
+            // \App\Models\Objectives::factory(35)->create();
+            Meadvices::factory(random_int(15,50))->create();
         // \App\Models\User::factory()->create([
         //     'name' => 'Test User',
         //     'email' => 'test@example.com',

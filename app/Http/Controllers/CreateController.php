@@ -1,10 +1,10 @@
 <?php
 
 namespace App\Http\Controllers;
+use Illuminate\Http\Request;
 use App\Models\Rules;
 use App\Models\objectives;
-use Illuminate\Http\Request;
-
+use App\Models\Meadvices;
 class CreateController extends Controller
 {
 
@@ -23,6 +23,14 @@ class CreateController extends Controller
         ]);
         Objectives::create($newelm);
         return redirect('/objectives');
+
+    }
+
+    public function Meadvice(Request $req){
+        $newelm = $req->validate([
+            'content'=>'required',
+        ]);
+        Meadvices::create($newelm);
 
     }
 }

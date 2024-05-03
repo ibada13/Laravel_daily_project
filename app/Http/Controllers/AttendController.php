@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Models\Rules;
 use App\Models\objectives;
 use App\Models\Meadvices;
+use App\Models\Extra;
+use App\Models\Toodo;
 
 class AttendController extends Controller
 {
@@ -88,5 +90,33 @@ class AttendController extends Controller
             'content'=>$meadvice,
             'dir'=>'/meadvice/update'
         ]);
+    }
+
+
+    public function Extra(){
+        return view('humans.extra',[
+            'days'=>Extra::latest()->paginate(10),
+        ]);
+    }
+
+    public function Days(int $day){
+        return view('angels.Israfil' , [
+            'id'=>$day
+        ]);
+    }
+    public function Toodo(int $day){
+        $buttonAttributes  = [
+            ['content'=> 'EDIT','method'=> 'GET' , 'dir'=> 'extra/toodo/edit' , 'theme'=> 'add' ],
+            ['content'=> 'DELETE','method'=> 'DELETE' , 'dir'=> 'extra/toodo' , 'theme'=> 'delete'],
+            ['content'=> 'Done','method'=> 'PUT' , 'dir'=> 'extra/toodo' , 'theme'=> ''],
+
+        ];
+        $this->setter($buttonAttributes);
+        return view('humans.toodo' , [
+            'id'=>$day,
+            't'=>Toodo::where('extra_id' , $day)->latest()->paginate(10),
+            'bp'=>$buttonAttributes,
+        ]);
+
     }
 }

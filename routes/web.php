@@ -54,20 +54,26 @@ Route::put('/meadvices/update/{meadvice}/',[AlterController::class , 'Meadvice']
 
 Route::get('/meadvices/edit/{meadvice}/' , [AttendController::class ,  'EditMeadvice']);
 //////////////////////////////////////////////////////
-Route::get('/extra',[CreaturesController::class , 'extra']);
+Route::get('/extra',[AttendController::class , 'extra']);
+
+
+//////////////////////////////////////////////////////////
+// Route::get('extra/{id}/days',[CreaturesController::class , 'days']);
+
+Route::get('/extra/{day}' , [AttendController::class , 'Days']);
 
 
 
-Route::get('/day/{id}',[CreaturesController::class , 'days']);
 
-Route::get('/day/{id}/toodo',[CreaturesController::class , 'todo']);
 
-Route::get('/day/{id}/things',function(int $id){
+
+Route::get('/extra/{id}/toodo',[AttendController::class , 'Toodo']);
+Route::get('/extra/{id}/things',function(int $id){
     return view('humans.things',[
         'id'=>$id,
     ]);
 });
-Route::get('/day/{id}/achives',function(int $id){
+Route::get('/extra/{id}/achives',function(int $id){
     return view('humans.achives',[
         'id'=>$id,
     ]);

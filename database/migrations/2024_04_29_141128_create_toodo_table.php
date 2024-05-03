@@ -13,6 +13,10 @@ return new class extends Migration
     {
         Schema::create('toodo', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('extra_id')->nullable();
+            $table->foreign('extra_id')->references('id')->on('extra')->onDelete('cascade');
+            $table->string('content');
+            $table->boolean('is_Done')->default(false);
             $table->timestamps();
         });
     }

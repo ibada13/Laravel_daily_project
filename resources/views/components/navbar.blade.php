@@ -3,7 +3,7 @@
     @isset($elms)
     @isset($id)
         @foreach ($elms as $elm)
-            <a href="/day/{{$id}}/{{$elm}}" class="ml-2 text-accent uppercase ">{{$elm}}</a>
+            <a href="/extra/{{$id}}/{{$elm}}" class="ml-2 text-accent uppercase ">{{$elm}}</a>
         @endforeach
 
     @else

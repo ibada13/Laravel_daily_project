@@ -8,7 +8,9 @@
 
 
         @yield('subcontent')
-    
+        <div class="mt-6 p-4">
+            {{$t->links('pagination::tailwind')}}
+        </div>
 </div>
 
 @endsection

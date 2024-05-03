@@ -27,18 +27,7 @@ class CreaturesController extends Controller
             "bp"=>$this->bp,
         ]);
     } 
-    public function extra(){
-        $t = array();
-        for($i =0;$i<5;$i++){
-            $t[$i]['id']=$i;
-            $t[$i]['createdat']='day : '.$i; 
-        }
-        $bp['content'] = "Delete";
-        $bp['theme'] = "delete";
-        return view('humans.extra',[
-            "t"=>$t
-        ]);
-    }
+
     public function days($id){
         if(is_numeric($id)){
 
@@ -51,11 +40,13 @@ class CreaturesController extends Controller
             return $errres->show("id not found");
         } 
     }
-    public function todo($id){
-        return view('humans.toodo' , [
-            "id"=>$id,
-        ]);
-    }
+    // public function todo($id){
+    //     return view('humans.toodo' , [
+    //         "t"=>[["content"=>"htis is first " ],[ "content"=>"this is second"]],
+    //         "bp"=>["dir"=>"test"],
+    //         'dir'=>'test'
+    //     ]);
+    // }
     public function things($id){
         return view('humans.things');
     }

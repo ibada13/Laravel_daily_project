@@ -3,10 +3,9 @@
 
 <div class="min-h-screen h-auto flex justify-center items-center ">
     <div class="w-3/4 h-auto">
-        @isset($t)
-        @foreach ($t as $item)
-            <x-md.daycard :day="$item"/>
-        @endforeach
+        
+        @isset($days)
+            <x-daycard :days="$days"/>
         @endisset
     </div>
 </div>

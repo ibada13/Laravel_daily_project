@@ -22,8 +22,10 @@ class Button extends Component
         $this->content = $content;
         $this->id = $id ; 
         $this->dir = $dir; 
-        
-        if($theme == "ADD" || $theme == "add"){
+        if($theme == "edit" || $theme == "EDIT"){
+            $this->class = "bg-text uppercase p-2 rounded-lg transition hover:bg-accent  text-back";
+        }
+        else if($theme == "ADD" || $theme == "add"){
             $this->class = "bg-gr uppercase p-2 rounded-lg transition hover:bg-accent  text-back";
         }
         else if($theme == "DELETE" || $theme == "delete"){

@@ -106,9 +106,9 @@ class AttendController extends Controller
     }
     public function Toodo(int $day){
         $buttonAttributes  = [
-            ['content'=> 'EDIT','method'=> 'GET' , 'dir'=> 'extra/toodo/edit' , 'theme'=> 'add' ],
-            ['content'=> 'DELETE','method'=> 'DELETE' , 'dir'=> 'extra/toodo' , 'theme'=> 'delete'],
-            ['content'=> 'Done','method'=> 'PUT' , 'dir'=> 'extra/toodo' , 'theme'=> ''],
+            ['content'=> 'EDIT','method'=> 'GET' , 'dir'=> 'toodo' , 'theme'=> 'add' ],
+            ['content'=> 'DELETE','method'=> 'DELETE' , 'dir'=> 'toodo' , 'theme'=> 'delete'],
+            ['content'=> 'Done','method'=> 'PUT' , 'dir'=> 'toodo' , 'theme'=> 'edit'],
 
         ];
         $this->setter($buttonAttributes);
@@ -119,4 +119,12 @@ class AttendController extends Controller
         ]);
 
     }
+    public function EditToodo(Extra $day ,Toodo $toodo){
+        return view('angels.Harut' , [
+            'content'=>$toodo,
+            'dir'=>"/extra/{$day->id}/toodo/update"
+        ]);
+    }
+
+
 }

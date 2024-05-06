@@ -65,9 +65,15 @@ Route::get('/extra/{day}' , [AttendController::class , 'Days']);
 
 
 
-
-
+///////////////////////////////////////////////////////////////////
 Route::get('/extra/{id}/toodo',[AttendController::class , 'Toodo']);
+Route::put('/extra/{day}/toodo/update/{toodo}',[AlterController::class , 'Toodo']);
+
+Route::put('/extra/{day}/toodo/{id}',[AlterController::class , 'is_done' ]);
+Route::get('/extra/{day}/toodo/{toodo}/',[AttendController::class , 'EditToodo' ]);
+Route::delete('/extra/{day}/toodo/{toodo}/',[AnnihilationController::class , 'Toodo' ]);
+
+
 Route::get('/extra/{id}/things',function(int $id){
     return view('humans.things',[
         'id'=>$id,

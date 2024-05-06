@@ -9,6 +9,6 @@
     @enderror
     <div class="flex-grow flex justify-center items-center ">
 
-    <x-button   :content="$buttoncontent" :theme="$buttontheme" :class="$buttonclass" :method="$buttonmethod"  />
+    <x-button :content="$buttoncontent" :theme="$buttontheme" :class="$buttonclass" :method="$buttonmethod"  />
 </form>
 </div>

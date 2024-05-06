@@ -6,6 +6,9 @@ use Illuminate\Http\Request;
 use App\Models\Rules;
 use App\Models\objectives;
 use App\Models\Meadvices;
+use App\Models\Toodo;
+use App\Models\Extra;
+
 
 class AlterController extends Controller
 {
@@ -39,5 +42,18 @@ class AlterController extends Controller
         ]);
         $meadvice->update($newelm);
         return redirect('/meadvices');
+    }
+    public function Toodo(Request $req ,Extra $day, Toodo $toodo){
+        $newelm = $req->validate([
+            'content'=>'required',
+        ]);
+        $toodo->update($newelm);
+        // dd($newelm , $toodo);
+        return redirect("/extra/{$day->id}/toodo");
+
+    }
+    public function is_done(Extra $day , Toodo $id ){
+        $id->update(["is_Done" => true]);
+        return back();
     }
 }

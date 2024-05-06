@@ -7,12 +7,12 @@
 
 </div>
 <div class="min-h-screen h-auto flex justify-center items-center">
-    <div class="w-3/4">
-        
-            <x-card :elms="$t" :bp="$bp"  />
-    
+    <div class=" w-screen flex flex-col  items-center">
 
-    </div>  
+            <x-Toodocard :elms="$t" :bp="$bp"  />
+    </div>
+
+   
 </div>
 
 @endsection

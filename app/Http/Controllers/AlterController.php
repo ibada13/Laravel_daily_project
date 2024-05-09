@@ -8,6 +8,10 @@ use App\Models\objectives;
 use App\Models\Meadvices;
 use App\Models\Toodo;
 use App\Models\Extra;
+use App\Models\GoodThings;
+use App\Models\BadThings;
+use App\Models\Achives;
+
 
 
 class AlterController extends Controller
@@ -48,12 +52,44 @@ class AlterController extends Controller
             'content'=>'required',
         ]);
         $toodo->update($newelm);
-        // dd($newelm , $toodo);
+        // dd($newelm , $toodo,$req);
         return redirect("/extra/{$day->id}/toodo");
 
     }
     public function is_done(Extra $day , Toodo $id ){
         $id->update(["is_Done" => true]);
         return back();
+    }
+
+    
+    public function GoodThing(Request $req ,  Extra $day , GoodThings $thing){
+        $newelm = $req->validate([
+            "content"=>"required",
+        ]);
+
+        $thing->update($newelm);
+        return redirect("/extra/{$day->id}/things");
+    }
+
+
+    public function BadThing(Request $req ,  Extra $day , BadThings $thing){
+        $newelm = $req->validate([
+            "content"=>"required",
+        ]);
+
+        $thing->update($newelm);
+        return redirect("/extra/{$day->id}/things");
+    }
+
+    
+
+
+    public function Achive(Request $req , Extra $day , Achives $achive){
+        $newelm = $req->validate([
+           'content'=>"required" 
+        ]);
+        $achive->update($newelm);
+
+        return redirect("/extra/{$day->id}/achives/");
     }
 }

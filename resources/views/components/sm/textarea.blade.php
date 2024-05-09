@@ -4,11 +4,11 @@
     {{-- @dd($class) --}}
 
     <textarea  name="content"  spellcheck="false"  type="" class="{{$class}}">{{$content}}</textarea>
-    @error('content')
-        <p class="  text-red-500 "> {{$message}} </p>
-    @enderror
     <div class="flex-grow flex justify-center items-center ">
-
-    <x-button :content="$buttoncontent" :theme="$buttontheme" :class="$buttonclass" :method="$buttonmethod"  />
-</form>
+        
+        <x-button :content="$buttoncontent" :theme="$buttontheme" :class="$buttonclass" :method="$buttonmethod"  />
+    </form>
+    @error('content')
+    <p class="  text-red-500 "> {{$message}} </p>
+    @enderror
 </div>

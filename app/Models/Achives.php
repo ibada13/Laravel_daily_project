@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Achives extends Model
 {
     use HasFactory;
+    public $fillable = ['content','extra_id'] ;
 
     
     public function Extra(){

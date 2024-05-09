@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Toodo extends Model
 {
     use HasFactory;
-    public $fillable = ['is_Done'];
+    public $fillable = ['is_Done','content', 'extra_id'];
     public $table = 'toodo';
     public function Extra(){
         return $this->belongsTo(Extra::class);

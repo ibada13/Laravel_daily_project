@@ -9,7 +9,8 @@ class BadThings extends Model
 {
     use HasFactory;
     public $table = 'badthings';
-    protected $fillable = ['content', 'extra_id']; 
+    public $fillable = ['content','extra_id'] ; 
+
     public function Extra(){
         return $this->belongsTo(Extra::class);
     }

@@ -11,7 +11,7 @@
 @else
     @csrf
     @method($method)
-    <button  type="submit" class="{{$class}}">{{$content}}</button>
+    <button   type="submit" class="{{$class}}">{{$content}}</button>
     
 @endif
 

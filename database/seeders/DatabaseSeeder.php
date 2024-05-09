@@ -20,11 +20,11 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // \App\Models\User::factory(10)->create();
-            // Rules::factory(35)->create();
-            // Objectives::factory(35)->create();
-            // Meadvices::factory(random_int(15,50))->create();
-
+// \App\Models\User::factory(10)->create();
+            Rules::factory(35)->create();
+            Objectives::factory(35)->create();
+            Meadvices::factory(random_int(15,50))->create();
+        
             $elm = Extra::factory(random_int(15,35))
             ->has(BadThings::factory(random_int(2,10)))
             ->has(GoodThings::factory(random_int(2,10)))

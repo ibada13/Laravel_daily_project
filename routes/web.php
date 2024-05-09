@@ -46,7 +46,7 @@ Route::put('/objectives/update/{objective}/',[AlterController::class , 'Objectiv
 
 Route::get('/meadvices',[AttendController::class , 'Meadvice']);
 
-Route::POSt('/meadvices', [CreateController::class ,  'Meadvices']);
+Route::post('/meadvices', [CreateController::class ,  'Meadvice']);
 
 Route::delete('/meadvices/{meadvice}/',[AnnihilationController::class , 'Meadvice']);
 
@@ -66,12 +66,60 @@ Route::get('/extra/{day}' , [AttendController::class , 'Days']);
 
 
 ///////////////////////////////////////////////////////////////////
-Route::get('/extra/{id}/toodo',[AttendController::class , 'Toodo']);
+Route::get('/extra/{day}/toodo',[AttendController::class , 'Toodo']);
+
+Route::post('/extra/{day}/toodo',[CreateController::class , 'Toodo']);
+
+
 Route::put('/extra/{day}/toodo/update/{toodo}',[AlterController::class , 'Toodo']);
 
 Route::put('/extra/{day}/toodo/{id}',[AlterController::class , 'is_done' ]);
+
 Route::get('/extra/{day}/toodo/{toodo}/',[AttendController::class , 'EditToodo' ]);
+
 Route::delete('/extra/{day}/toodo/{toodo}/',[AnnihilationController::class , 'Toodo' ]);
+
+///////////////////////////////////////////////////////////////////////////////
+
+Route::get('/extra/{day}/things',[AttendController::class , 'Thing']);
+
+
+Route::post('/extra/{day}/goodthing',[CreateController::class , 'GoodThing']);
+
+
+Route::post('/extra/{day}/badthing',[CreateController::class , 'BadThing']);
+
+
+Route::get('/extra/{day}/badthing/{thing}',[AttendController::class , 'EditBadThing']);
+
+Route::get('/extra/{day}/goodthing/{thing}',[AttendController::class , 'EditGoodThing']);
+
+Route::put('/extra/{day}/goodthing/{thing}',[AlterController::class ,  'GoodThing']);
+
+Route::put('/extra/{day}/badthing/{thing}',[AlterController::class ,  'BadThing']);
+
+Route::delete('/extra/{day}/goodthing/{thing}',[AnnihilationController::class ,  'GoodThing']);
+
+Route::delete('/extra/{day}/badthing/{thing}',[AnnihilationController::class ,  'BadThing']);
+
+//////////////////////////////////////////////////////////////////////////////////
+Route::get('/extra/{day}/achives',[AttendController::class , 'Achive']);
+
+Route::post('/extra/{day}/achives',[CreateController::class , 'Achive']);
+
+
+
+Route::get('/extra/{day}/achive/{achive}' , [AttendController ::class , 'EditAchive']);
+
+Route::put('/extra/{day}/achive/{achive}' , [AlterController ::class , 'Achive']);
+
+
+Route::delete('/extra/{day}/achive/{achive}', [AnnihilationController ::class , 'Achive']);
+
+
+
+
+
 
 
 Route::get('/extra/{id}/things',function(int $id){

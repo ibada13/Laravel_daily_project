@@ -7,6 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Meadvices extends Model
 {
+    protected $casts =[ 
+        "content"=>"encrypted"
+    ]; 
     protected $fillable = ['content'];
     use HasFactory;
 }

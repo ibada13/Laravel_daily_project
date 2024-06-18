@@ -5,7 +5,7 @@
 <form action="{{$dir}}" method="post">
     @csrf
     @method($method)
-    <button type="submit" class="{{$class}} ">{{$content}}</button>
+    <button type="submit" class="{{$class}}  ">{{$content}}</button>
     
 </form>
 @else

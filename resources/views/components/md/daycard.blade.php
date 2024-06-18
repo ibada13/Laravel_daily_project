@@ -7,9 +7,11 @@
             {{$day['created_at']}}
         </h2>
     </div>
-    <div class="min-h-16 h-auto flex justify-center items-center ">
-        <button class="text-text bg-secondory hover:bg-accent hover:text-back transition  uppercase p-2 rounded">delete</button>
-    </div>
+    <form action="/extra/{{$day->id}}" method="POST" class="min-h-16 h-auto flex justify-center items-center ">
+        @csrf
+        @method('DELETE')
+        <button  class="text-text bg-secondory hover:bg-accent hover:text-back transition  uppercase p-2 rounded">delete</button>
+    </form >
 </a>
 @endforeach   
 @endisset

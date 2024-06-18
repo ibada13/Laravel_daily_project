@@ -7,6 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class BadThings extends Model
 {
+    protected $casts =[ 
+        "content"=>"encrypted"
+    ]; 
     use HasFactory;
     public $table = 'badthings';
     public $fillable = ['content','extra_id'] ; 

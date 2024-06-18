@@ -15,8 +15,8 @@ export default {
         primary:'#966bfa',
         secondory: '#86059b',
         accent: '#f716f8',
-        gr: '#66FF00',
-        ar:'#FF033E'
+        gr: '#66ff00',
+        ar:'#ff033e'
       }
     },
   },

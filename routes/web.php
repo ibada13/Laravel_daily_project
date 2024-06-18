@@ -57,10 +57,17 @@ Route::get('/meadvices/edit/{meadvice}/' , [AttendController::class ,  'EditMead
 Route::get('/extra',[AttendController::class , 'extra']);
 
 
+
+Route::post('/extra' ,[CreateController::class , 'extra']);
+
+
+Route::delete('/extra/{day}' ,[AnnihilationController::class , 'extra']);
+
+
 //////////////////////////////////////////////////////////
 // Route::get('extra/{id}/days',[CreaturesController::class , 'days']);
 
-Route::get('/extra/{day}' , [AttendController::class , 'Days']);
+Route::get('/extra/{day}' , [AttendController::class , 'Days'])->name('day.show');
 
 
 
@@ -117,11 +124,18 @@ Route::put('/extra/{day}/achive/{achive}' , [AlterController ::class , 'Achive']
 Route::delete('/extra/{day}/achive/{achive}', [AnnihilationController ::class , 'Achive']);
 
 
+/////////////////////////////////////////////////////////
+Route::get("/notes",[AttendController::class,'Topics']);
 
 
+Route::get('/notes/{top}/{stop}',[AttendController::class ,'Notes' ]);
+
+Route::post('/notes/{top}',[CreateController::class ,'SubTopics' ]);
+
+Route::post('/notes',[CreateController::class , 'Topics']);
 
 
-
+Route::put('/subtopics/{stop}',[AnnihilationController::class , 'SubTopics']);
 Route::get('/extra/{id}/things',function(int $id){
     return view('humans.things',[
         'id'=>$id,
@@ -132,9 +146,7 @@ Route::get('/extra/{id}/achives',function(int $id){
         'id'=>$id,
     ]);
 });
-Route::get('/notes',function(){
-    return view('eve.notes');
-});
+
 
 Route::get('/timer',function(){
     return view('humans.timer');

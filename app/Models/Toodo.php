@@ -7,6 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Toodo extends Model
 {
+    protected $casts =[ 
+        "content"=>"encrypted"
+    ]; 
     use HasFactory;
     public $fillable = ['is_Done','content', 'extra_id'];
     public $table = 'toodo';

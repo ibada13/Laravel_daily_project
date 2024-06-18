@@ -8,6 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class objectives extends Model
 {
     protected  $fillable = ['content'] ;
-
+    protected $casts =[ 
+        "content"=>"encrypted"
+    ]; 
     use HasFactory;
 }

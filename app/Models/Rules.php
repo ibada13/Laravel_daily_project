@@ -7,6 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Rules extends Model
 {
+    protected $casts =[ 
+        "content"=>"encrypted"
+    ]; 
     protected $fillable = ['content'] ;
     use HasFactory;
     public function find($id){

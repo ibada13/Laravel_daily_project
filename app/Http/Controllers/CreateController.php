@@ -10,6 +10,9 @@ use App\Models\Toodo;
 use App\Models\GoodThings;
 use App\Models\BadThings;
 use App\Models\Achives ;
+use App\Models\Topics;
+use App\Models\SubTopics;
+
 use Illuminate\Support\Facades\Redirect;
 
 class CreateController extends Controller
@@ -78,4 +81,25 @@ class CreateController extends Controller
         Achives::create($newelm);
         return Redirect::back();
     }
+        public function Extra(Request $req ){
+            $newe = Extra::create();
+            return Redirect::route('day.show' , ['day'=>$newe->id]);
+        }
+
+        public function Topics(Request $req){
+            $newt = $req->validate([
+                'title'=>'required'
+            ]);
+            Topics::create($newt);
+            return Redirect::back();
+        }
+
+        public function SubTopics(Request $req , Topics $top){
+            $newst = $req->validate([
+                'title'=>'required'
+            ]);
+            $newst['topics_id'] = $top->id ;
+            $newstopic = SubTopics::create($newst);
+            return redirect("/notes/{$top->id}/{$newstopic->id}");
+        }
 }

@@ -10,11 +10,13 @@
         @yield('subcontent')
         
         @isset($t)
-        @isset($t->links)
+        {{-- @dd($t) --}}
             <div class="mt-6 p-4">
+                @if(method_exists($t,'links'))
                 {{$t->links('pagination::tailwind')}}
+                @endif
             </div>
-        @endisset
+        
         @endisset
 </div>
 

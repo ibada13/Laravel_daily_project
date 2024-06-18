@@ -11,6 +11,10 @@ use App\Models\Extra;
 use App\Models\Toodo;
 use App\Models\GoodThings;
 use App\Models\BadThings;
+use App\Models\Notes;
+use App\Models\SubTopics;
+use App\Models\Topics;
+
 
 use function PHPUnit\Framework\isInstanceOf;
 
@@ -98,11 +102,7 @@ class AttendController extends Controller
     }
 
 
-    public function Extra(){
-        return view('humans.extra',[
-            'days'=>Extra::latest()->paginate(10),
-        ]);
-    }
+
 
     public function Days(int $day){
         return view('angels.Israfil' , [
@@ -139,7 +139,9 @@ class AttendController extends Controller
             ['content'=> 'DELETE','method'=> 'DELETE' , 'dir'=> '' , 'theme'=> 'delete'],
         ];
         $this->setter($buttonAttributes);
-        $elms = GoodThings::where('extra_id', $day->id)->get()->merge(BadThings::where('extra_id', $day->id)->get())->sortBy('created_at');
+        $gt= GoodThings::where('extra_id', $day->id)->orderBy('created_at')->paginate(10);
+        $bt = BadThings::where('extra_id', $day->id)->orderBy('created_at')->paginate(10);
+        $elms = $gt->merge($bt)->sortBy('created_at');
         return view('humans.things',[
             'id'=>$day->id , 
             't'=>$elms,  
@@ -187,6 +189,43 @@ class AttendController extends Controller
         return view('angels.Harut',[
             'content'=>$achive,
             'dir'=>"/extra/{$day->id}/achive"
+        ]);
+    }
+
+    public function Extra(){
+        return view('humans.extra',[
+            'days'=>Extra::latest()->paginate(10),
+        ]);
+    }
+
+    public function Topics(){
+        $tops = Topics::with('SubTopics')->get();
+        // foreach($tops as $top){
+        //     $top['sub'] = SubTopics::where('topics_id' , $top->id);
+        // }
+        return view('eve.notes',[
+            'tops'=>$tops
+        ]);
+    }
+
+    // public function SubTopics(){}
+    public function Notes(Request $req, Topics $top , SubTopics $stop){
+        // dd($stop);
+        $notes = Notes::where('sub_topics_id', $stop->id)->get();
+        $tops= Topics::where('id', $top->id)->with('SubTopics')->first();
+        $tops['startopic'] = $stop ;
+        return view('eve.notes',[
+            'notes'=>$notes,
+            'tops'=>[$tops],
+            
+        ]);
+    }
+
+    public function EditNote(Request $req , Notes $note){
+        $note['content']= $note['note'];
+        return view('angels.Harut',[
+            'content'=>$note,
+            'dir'=>"/notes/edit/$note->id"
         ]);
     }
 }

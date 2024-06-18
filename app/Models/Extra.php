@@ -7,8 +7,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class Extra extends Model
 {
-    
+    protected $casts =[ 
+        "content"=>"encrypted"
+    ]; 
     use HasFactory;
+    public $fillable = ['id'];
     public $table = "extra";
     public function BadThings(){
         return $this->hasMany(BadThings::class);

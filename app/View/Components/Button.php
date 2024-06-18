@@ -9,7 +9,7 @@ use Illuminate\View\Component;
 class Button extends Component
 {
     public $content;
-    public $class ; 
+    public $class ;
     public $id ; 
     public $dir ; 
     public $method  ; 

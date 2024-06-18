@@ -13,6 +13,7 @@ use App\Models\GoodThings;
 use App\Models\BadThings;
 use App\Models\Achive;
 use App\Models\Achives;
+use App\Models\SubTopics;
 use Illuminate\Support\Facades\Redirect;
 
 class AnnihilationController extends Controller
@@ -52,5 +53,14 @@ class AnnihilationController extends Controller
     public function Achive(Extra $day , Achives $achive ){
         $achive->delete();
         return Redirect::back();
+    }
+    public function Extra(Request $req , Extra $day){
+        $day->delete();
+        return Redirect::back();
+    } 
+    public function SubTopics(Request $req , SubTopics $stop){
+        $stop->delete();
+        return redirect('/notes');
+
     }
 }

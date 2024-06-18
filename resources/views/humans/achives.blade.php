@@ -6,7 +6,5 @@
 <x-card :elms="$t" :bp="$bp"/>
 @endisset
 @endisset
-<div class="mt-6 p-4">
-    {{$t->links('pagination::tailwind')}}
-</div>
+
 @endsection

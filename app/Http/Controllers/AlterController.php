@@ -11,8 +11,9 @@ use App\Models\Extra;
 use App\Models\GoodThings;
 use App\Models\BadThings;
 use App\Models\Achives;
-
-
+use App\Models\Notes;
+use App\Models\SubTopics;
+use App\Models\Topics;
 
 class AlterController extends Controller
 {
@@ -91,5 +92,15 @@ class AlterController extends Controller
         $achive->update($newelm);
 
         return redirect("/extra/{$day->id}/achives/");
+    }
+    public function Notes(Request $req , Notes $note){
+        $newnote = $req->validate([
+            'content'=>'required',
+        ]);
+        $newnote['note']=$newnote['content'];
+        $note->update($newnote);
+        $parent = SubTopics::find($note['sub_topics_id']);
+        $gp=Topics::find($parent->topics_id);
+        return redirect("/notes/{$gp->id}/{$parent->id}");
     }
 }

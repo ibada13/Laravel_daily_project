@@ -10,5 +10,11 @@ export default defineConfig({
     ],
     build: {
         outDir: 'public/build',
-    },
-});
+        output: {
+
+            entryFileNames: 'js.js',
+            assetFileNames: 'css.css',
+            chunkFileNames: "chunk.js",
+        },
+        },
+    });

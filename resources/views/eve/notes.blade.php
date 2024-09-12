@@ -6,7 +6,13 @@
         @isset($tops)
             @foreach($tops as $top)
         <details class="bg-black w-3/4 text-ar hover:bg-secondory hover:text-text border hover:border-text rounded-xl p-2 m-2">
-            <summary>{{$top['title']}}</summary>
+            <summary>{{$top['title']}} 
+                <form action="/notes/{{$top['id']}}" method="POST">
+                    @csrf
+                    @method('DELETE')
+                    <button type="submit" class = "bg-black w-3/4 text-ar hover:bg-secondory hover:text-text border border-text rounded-xl p-2 m-2">-</button>
+                </form>
+            </summary>
             <div>
                 @isset($top['subtopics'])
                     @foreach ($top['subtopics'] as $stop)
@@ -67,8 +73,9 @@
                             {{$note['note']}}
                         </div>
                         <div class="flex justify-around">
-                            <form action="" method="POST">
-                                @csrf('put')
+                            <form action="/notes/edit/{{$note['id']}}" method="GET">
+                                @csrf
+                                @method('GET')
                                 <button type="submit" class="bg-gr p-2 m-2 rounded-lg">edit note</button>
                             </form>
                             <form action="" method="POST">
@@ -80,5 +87,4 @@
                 @endforeach
             @endisset
     </div>
-
 @endsection

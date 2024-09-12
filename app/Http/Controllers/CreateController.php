@@ -91,7 +91,7 @@ class CreateController extends Controller
                 'title'=>'required'
             ]);
             Topics::create($newt);
-            return Redirect::back();
+            return redirect('/notes');
         }
 
         public function SubTopics(Request $req , Topics $top){

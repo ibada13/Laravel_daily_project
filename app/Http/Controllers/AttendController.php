@@ -221,11 +221,12 @@ class AttendController extends Controller
         ]);
     }
 
-    public function EditNote(Request $req , Notes $note){
+    public function EditNotes(Request $req , Notes $note){
+        // dd($note);
         $note['content']= $note['note'];
         return view('angels.Harut',[
             'content'=>$note,
-            'dir'=>"/notes/edit/$note->id"
+            'dir'=>"/notes/edit"
         ]);
     }
 }

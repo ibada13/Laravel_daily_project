@@ -14,6 +14,7 @@ use App\Models\BadThings;
 use App\Models\Achive;
 use App\Models\Achives;
 use App\Models\SubTopics;
+use App\Models\Topics;
 use Illuminate\Support\Facades\Redirect;
 
 class AnnihilationController extends Controller
@@ -62,5 +63,10 @@ class AnnihilationController extends Controller
         $stop->delete();
         return redirect('/notes');
 
+    }
+    public function Topics(Request $req , Topics $top ){
+        // dd($top);
+        $top->delete();
+        return redirect('/notes');
     }
 }

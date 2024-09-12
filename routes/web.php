@@ -125,7 +125,15 @@ Route::delete('/extra/{day}/achive/{achive}', [AnnihilationController ::class , 
 
 
 /////////////////////////////////////////////////////////
+
 Route::get("/notes",[AttendController::class,'Topics']);
+
+Route::delete('/notes/{top}',[AnnihilationController::class,'Topics']);
+
+
+Route::get('/notes/edit/{note}',[AttendController::class , 'EditNotes']);
+
+Route::put('/notes/edit/{note}',[AlterController::class , 'Notes']);
 
 
 Route::get('/notes/{top}/{stop}',[AttendController::class ,'Notes' ]);
@@ -133,6 +141,16 @@ Route::get('/notes/{top}/{stop}',[AttendController::class ,'Notes' ]);
 Route::post('/notes/{top}',[CreateController::class ,'SubTopics' ]);
 
 Route::post('/notes',[CreateController::class , 'Topics']);
+
+
+
+
+
+
+
+
+
+
 
 
 Route::put('/subtopics/{stop}',[AnnihilationController::class , 'SubTopics']);
